@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login & Registration Form</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: #f3f3f3;
+        }
+        .container {
+            width: 350px;
+            background: #fff;
+            padding: 20px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        .tabs {
+            display: flex;
+            justify-content: space-between;
+        }
+        .tabs button {
+            width: 50%;
+            padding: 10px;
+            border: none;
+            background: #ddd;
+            cursor: pointer;
+        }
+        .tabs button.active {
+            background: #3498db;
+            color: white;
+        }
+        .form-container {
+            margin-top: 20px;
+        }
+        .form-container input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .form-container button {
+            width: 100%;
+            padding: 10px;
+            background: #3498db;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .form-container button:hover {
+            background: #2980b9;
+        }
+        h3{
+            display: none;
+        }
+    </style>
+    <script>
+        function showForm(form) {
+            document.getElementById('loginForm').style.display = form === 'login' ? 'block' : 'none';
+            document.getElementById('registerForm').style.display = form === 'register' ? 'block' : 'none';
+            document.getElementById('loginTab').classList.toggle('active', form === 'login');
+            document.getElementById('registerTab').classList.toggle('active', form === 'register');
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="tabs">
+            <button id="loginTab" class="active" onclick="showForm('login')">Login</button>
+            <button id="registerTab" onclick="showForm('register')">Register</button>
+        </div>
+        <h3 style="color: red; font-size: 12px;text-align: center; margin-top: 20px;">User Doesn't Exist !!</h3>
+        <div class="form-container">
+            <form id="loginForm">
+                <input type="text" placeholder="Username" id="uid" required>
+                <input type="password" placeholder="Password" id="pwd" required>
+                <button class="login">Login</button>
+            </form>
+            <form id="registerForm" style="display: none;">
+                <input type="text" placeholder="Username" required>
+                <input type="password" placeholder="Password" required>
+                <button>Register</button>
+            </form>
+        </div>
+
+    </div>
+
+    <script>
+        const uid = document.querySelector('#uid');
+        const pwd = document.querySelector('#pwd');
+        
+        document.querySelector('button.login').addEventListener('click',function(event){
+            event.preventDefault();
+            // console.log(uid.value,pwd.value);
+            var counter = 0;
+            for (let i = 1; i <= localStorage.length/2; i++) {
+                // console.log(localStorage.getItem(`user${i}-name`),localStorage.getItem(`user${i}-password`));
+                if(uid.value==localStorage.getItem(`user${i}-name`) && pwd.value==localStorage.getItem(`user${i}-password`)){
+                    console.log("Matched !!!");
+                    counter++;
+                }
+            }
+            if(counter==0){
+                document.querySelector('h3').style.display = "block";
+                setTimeout(() => {
+                    document.querySelector('h3').style.display = "none";
+                }, 1500);
+            }
+        });
+        
+
+    </script>
+</body>
+</html>
