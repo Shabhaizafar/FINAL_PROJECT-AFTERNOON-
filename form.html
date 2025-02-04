@@ -65,6 +65,15 @@
         h3{
             display: none;
         }
+        p{
+            margin-top: 30px;
+            text-align: center;
+            cursor: pointer;
+            display: none;
+        }
+        p:hover{
+            color: blue;
+        }
     </style>
     <script>
         function showForm(form) {
@@ -72,6 +81,9 @@
             document.getElementById('registerForm').style.display = form === 'register' ? 'block' : 'none';
             document.getElementById('loginTab').classList.toggle('active', form === 'login');
             document.getElementById('registerTab').classList.toggle('active', form === 'register');
+            if(document.getElementById('registerTab').classList.contains('active')){
+                document.querySelector('.ap').style.display = "none";
+            }
         }
     </script>
 </head>
@@ -88,6 +100,7 @@
                 <input type="password" placeholder="Password" id="pwd" required>
                 <button class="login">Login</button>
             </form>
+            <p class="ap" onclick="showForm('register')">create a new Account ? </p>
             <form id="registerForm" style="display: none;">
                 <input type="text" placeholder="Username" required>
                 <input type="password" placeholder="Password" required>
@@ -108,19 +121,18 @@
             for (let i = 1; i <= localStorage.length/2; i++) {
                 // console.log(localStorage.getItem(`user${i}-name`),localStorage.getItem(`user${i}-password`));
                 if(uid.value==localStorage.getItem(`user${i}-name`) && pwd.value==localStorage.getItem(`user${i}-password`)){
-                    console.log("Matched !!!");
+                    location.href = "index.html";
                     counter++;
                 }
             }
             if(counter==0){
                 document.querySelector('h3').style.display = "block";
+                document.querySelector('.ap').style.display = "block";
                 setTimeout(() => {
                     document.querySelector('h3').style.display = "none";
                 }, 1500);
             }
         });
-        
-
     </script>
 </body>
 </html>

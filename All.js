@@ -64,3 +64,9 @@ const print_ptn = document.querySelector('.print-ptn');
 print_ptn.addEventListener('click',function(){
     print();
 });
+
+// ----------------------------
+const login_btn = document.querySelector('.login-btn');
+login_btn.onclick = function (){
+    location.href = "form.html";
+}
