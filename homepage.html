@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodeSnap-Inspired Home</title>
+    <link rel="stylesheet" href="assets/style.css">
+    <link rel="stylesheet" href="assets/styles.css">
+
+</head>
+<body>
+
+    <!-- Header with Navigation -->
+    <header class="navbar">
+        <div class="logo">CodeSnap</div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="homepage.html">HOME</a></li>
+                <li><button class="login-btn">Login</button></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>CodeSnap: Beautiful Code Screenshots</h1>
+        <p>Quickly create and share stunning code snippets with ease.</p>
+        <a href="#" class="cta-button">Get Started</a>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="feature">
+            <h2>🔥 Easy to Use</h2>
+            <p>Generate code screenshots effortlessly.</p>
+        </div>
+        <div class="feature">
+            <h2>🎨 Customizable</h2>
+            <p>Choose themes, fonts, and styles to match your preference.</p>
+        </div>
+        <div class="feature">
+            <h2>🚀 Fast & Lightweight</h2>
+            <p>No bloated software—just simple and efficient.</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>© 2025 CodeSnap. All rights reserved.</p>
+    </footer>
+
+    <script>
+        const login_btn = document.querySelector('.login-btn');
+login_btn.onclick = function (){
+    location.href = "form.html";
+}
+    const cta_button = document.querySelector('.cta-button');
+    cta_button.onclick = function (){
+    location.href = "index.html";
+}   
+    </script>
+</body>
+</html>
